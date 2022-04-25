@@ -1,0 +1,22 @@
+{{>layouts/header}}
+<!--
+action을 통해서 페이지의 정보를 보내줌 key값을 넘겨줘야하는데 이를 숨겨서 다른 곳에 보내줘야함
+눈에는 보이지 않으나 데이터가 계속 따라다니게 하도록
+ -->
+{{#article}}
+<form class="container" action="/articles/update" method="post">
+    <input name="id" type="hidden" value="{{id}}">
+
+    <div class="mb-3">
+        <label class="form-label">제목</label>
+        <input type="text" class="form-control" name="title" value="{{article.title}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">내용</label>
+        <textarea class="form-control" rows="3" name="content">{{article.content}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">저장</button>
+    <a href="/articles/{{article.id}}">뒤로</a>
+</form>
+{{/article}}
+{{>layouts/footer}}
